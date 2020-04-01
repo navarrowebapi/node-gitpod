@@ -18,8 +18,8 @@ app.use(bodyParser.json());
 var port = process.env.port || 3000;
 
 //ROTAS
-var indexRoute = require("./routes/index-routes");
-var productRoute = require("./routes/product-routes");
+var indexRoute = require('./src/routes/index-routes');
+var productRoute = require('./src/routes/product-routes');
 
 //Vincular a aplicacao (app) com o motor de rotas
 //Rota geral (teste)

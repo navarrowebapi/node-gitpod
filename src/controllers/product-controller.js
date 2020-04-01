@@ -1,10 +1,7 @@
-const express = require('express')
-var router = express.Router(); //interceptação das rotas
-
-var Produto = require("../app/models/product");
+const Produto = require("../app/models/product");
 
 //Post
-router.post("/", function (req, res) {
+exports.post = function (req, res) {
     var produto = new Produto();
     produto.nome = req.body.nome;
     produto.preco = req.body.preco;
@@ -18,10 +15,10 @@ router.post("/", function (req, res) {
 
     });
 
-});
+}
 
 //Get All
-router.get("/", function (req, res) {
+exports.get = function (req, res) {
     Produto.find(function (err, prods) {
         if (err)
             res.send(err);
@@ -31,10 +28,10 @@ router.get("/", function (req, res) {
             produtos: prods
         });
     });
-});
+}
 
 //FindById
-router.get("/:productId", function (req, res) {
+exports.getById = function (req, res) {
     const id = req.params.productId;
 
     Produto.findById(id, function (err, produto) {
@@ -58,11 +55,11 @@ router.get("/:productId", function (req, res) {
 
     });
 
-});
+}
 
 
 //PUT
-router.put("/:productId", function (req, res) {
+exports.put = function (req, res) {
     const id = req.params.productId;
 
     Produto.findById(id, function (err, produto) {
@@ -95,10 +92,10 @@ router.put("/:productId", function (req, res) {
 
     });
 
-});
+}
 
 //DELETE
-router.delete("/:productId", function(req, res){
+exports.delete = function(req, res){
     Produto.findByIdAndRemove(req.params.productId, (err, produto) =>{
         if(err) 
             return res.status(500).send(err);
@@ -109,6 +106,5 @@ router.delete("/:productId", function(req, res){
         }; 
         return res.status(200).send(response);
     });
-});
+}
 
-module.exports = router;
