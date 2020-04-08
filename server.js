@@ -28,7 +28,7 @@ app.use('/api', indexRoute);
 app.use('/api/products', productRoute);
 
 app.listen(port, () => {
-    console.log('Server up and running!');
+    console.log('Server OK');
 
 });
 

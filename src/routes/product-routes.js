@@ -3,13 +3,20 @@ const router = express.Router(); //interceptação das rotas
 //const Produto = require("../app/models/product");
 const productController = require('../controllers/product-controller');
 
-
-
 router.post("/", productController.post);
-router.get("/", productController.get);
+router.get("/", productController.getAll);
 router.get("/:productId", productController.getById);
 router.put("/:productId", productController.put)
 router.delete('/:productId', productController.delete);
+
+
+
+
+
+
+
+
+
 
 // //Post
 // router.post("/", function (req, res) {
