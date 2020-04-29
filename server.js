@@ -20,12 +20,16 @@ var port = process.env.port || 3000;
 //ROTAS
 var indexRoute = require('./src/routes/index-routes');
 var productRoute = require('./src/routes/product-routes');
+var signupRoute = require('./src/routes/signup-route');
 
 //Vincular a aplicacao (app) com o motor de rotas
 //Rota geral (teste)
 app.use('/api', indexRoute);
 //Rotas para produtos
 app.use('/api/products', productRoute);
+//Rota para registro
+app.use('/api/register', signupRoute);
+
 
 app.listen(port, () => {
     console.log('Server OK');
