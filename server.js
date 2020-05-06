@@ -1,5 +1,3 @@
-// import express from 'express';
-// import bodyParser from 'body-parser';
 var express = require ('express');
 var bodyParser = require('body-parser');
 const app = express();
@@ -15,12 +13,13 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 //Definindo a porta via arquivo de configuração
-var port = process.env.port || 3000;
+const port = process.env.port || 3000;
 
 //ROTAS
-var indexRoute = require('./src/routes/index-routes');
-var productRoute = require('./src/routes/product-routes');
-var signupRoute = require('./src/routes/signup-route');
+const indexRoute = require('./src/routes/index-routes');
+const productRoute = require('./src/routes/product-routes');
+const signupRoute = require('./src/routes/signup-route');
+const loginRoute = require('./src/routes/login-route')
 
 //Vincular a aplicacao (app) com o motor de rotas
 //Rota geral (teste)
@@ -29,10 +28,10 @@ app.use('/api', indexRoute);
 app.use('/api/products', productRoute);
 //Rota para registro
 app.use('/api/register', signupRoute);
-
+//Rota para login
+app.use('/api/login', loginRoute);
 
 app.listen(port, () => {
     console.log('Server OK');
-
 });
 
